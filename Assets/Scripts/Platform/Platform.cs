@@ -8,6 +8,15 @@ public class Platform : MonoBehaviour
     [SerializeField]
     private List<Platform> _neighborsList;
 
+    [SerializeField]
+    private Material activeGlass;
+
+    [SerializeField]
+    private Material glass;
+
+    [SerializeField]
+    private Material platform;
+
     private bool _isEnabled = false;
 
     private bool active;
@@ -25,13 +34,15 @@ public class Platform : MonoBehaviour
     public void Enable()
     {
         _isEnabled = true;
-        gameObject.SetActive(true);
+        renderer.material = platform;
+        collider.isTrigger = false;
     }
     
     public void Disable()
     {
         _isEnabled = false;
-        gameObject.SetActive(false);
+        renderer.material = glass;
+        collider.isTrigger = true;
     }
 
     public bool IsEnabled()
@@ -69,13 +80,20 @@ public class Platform : MonoBehaviour
 
     private void Update()
     {
-        if (active)
+        if (!IsEnabled())
         {
-            gameObject.GetComponent<Renderer>().materials[0].shader = Shader.Find("Toon/Basic Outline");
-        }
-        else
-        {
-            gameObject.GetComponent<Renderer>().materials[0].shader = Shader.Find("Standard");
+            if (active)
+            {
+                renderer.material = activeGlass;
+                if (Input.GetMouseButtonDown(0))
+                {
+                    Enable();
+                }
+            }
+            else
+            {
+                renderer.material = glass;
+            }
         }
     }
 }
