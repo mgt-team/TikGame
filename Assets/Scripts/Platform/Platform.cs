@@ -9,7 +9,19 @@ public class Platform : MonoBehaviour
     private List<Platform> _neighborsList;
 
     private bool _isEnabled = false;
-    
+
+    private bool active;
+
+    private Renderer renderer;
+    private BoxCollider collider;
+
+    private void Awake()
+    {
+        renderer = gameObject.GetComponent<Renderer>();
+        collider = gameObject.GetComponent<BoxCollider>();
+
+    }
+
     public void Enable()
     {
         _isEnabled = true;
@@ -43,5 +55,27 @@ public class Platform : MonoBehaviour
         }
 
         return disabledNeighbors[Random.Range(0, disabledNeighbors.Count)];
+    }
+
+    public void ActivatePlatform()
+    {
+        active = true;
+    }
+
+    public void DisactivatePlatform()
+    {
+        active = false;
+    }
+
+    private void Update()
+    {
+        if (active)
+        {
+            gameObject.GetComponent<Renderer>().materials[0].shader = Shader.Find("Toon/Basic Outline");
+        }
+        else
+        {
+            gameObject.GetComponent<Renderer>().materials[0].shader = Shader.Find("Standard");
+        }
     }
 }
