@@ -31,6 +31,9 @@ public class ActivatePlatform : MonoBehaviour {
                     platform = hit.transform.GetComponent<Platform>();
                     platform.ActivatePlatform();
                 }
+
+                if (Input.GetMouseButtonDown(0) && !platform.IsEnabled())
+                    platform.Enable();
             }
         }
         else

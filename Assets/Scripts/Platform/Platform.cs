@@ -19,8 +19,6 @@ public class Platform : MonoBehaviour
 
     private bool _isEnabled = false;
 
-    private bool active;
-
     private Renderer renderer;
     private BoxCollider collider;
 
@@ -70,30 +68,17 @@ public class Platform : MonoBehaviour
 
     public void ActivatePlatform()
     {
-        active = true;
+        if (!IsEnabled())
+        {
+            renderer.material = activeGlass;
+        }
     }
 
     public void DisactivatePlatform()
     {
-        active = false;
-    }
-
-    private void Update()
-    {
         if (!IsEnabled())
         {
-            if (active)
-            {
-                renderer.material = activeGlass;
-                if (Input.GetMouseButtonDown(0))
-                {
-                    Enable();
-                }
-            }
-            else
-            {
-                renderer.material = glass;
-            }
+            renderer.material = glass;
         }
     }
 }
