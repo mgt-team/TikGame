@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 23604613339759034}
   - component: {fileID: 54471298053738614}
   - component: {fileID: 114931561967012038}
-  - component: {fileID: 114329562710526592}
   m_Layer: 0
   m_Name: Platform
   m_TagString: Platform
@@ -113,18 +112,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114329562710526592
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1346136631655394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c99a982f22de98f47a0321608167d802, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  raycastTransform: {fileID: 0}
 --- !u!114 &114931561967012038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -137,3 +124,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _neighborsList: []
+  _disableMaterial: {fileID: 2100000, guid: 950a293e83300264391191036211944e, type: 2}
+  _enableMaterial: {fileID: 2100000, guid: 6e9e6142255cc5741879012082b6c6b1, type: 2}
