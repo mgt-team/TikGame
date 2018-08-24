@@ -9,38 +9,35 @@ public class Platform : MonoBehaviour
     private List<Platform> _neighborsList;
 
     [SerializeField]
-    private Material activeGlass;
+    private Material _disableMaterial;
 
     [SerializeField]
-    private Material glass;
-
-    [SerializeField]
-    private Material platform;
+    private Material _enableMaterial;
 
     private bool _isEnabled = false;
 
-    private Renderer renderer;
-    private BoxCollider collider;
+    private Renderer _renderer;
+    private BoxCollider _collider;
 
     private void Awake()
     {
-        renderer = gameObject.GetComponent<Renderer>();
-        collider = gameObject.GetComponent<BoxCollider>();
+        _renderer = gameObject.GetComponent<Renderer>();
+        _collider = gameObject.GetComponent<BoxCollider>();
 
     }
 
     public void Enable()
     {
         _isEnabled = true;
-        renderer.material = platform;
-        collider.isTrigger = false;
+        _renderer.material = _enableMaterial;
+        _collider.isTrigger = false;
     }
     
     public void Disable()
     {
         _isEnabled = false;
-        renderer.material = glass;
-        collider.isTrigger = true;
+        _renderer.material = _disableMaterial;
+        _collider.isTrigger = true;
     }
 
     public bool IsEnabled()
@@ -66,19 +63,23 @@ public class Platform : MonoBehaviour
         return disabledNeighbors[Random.Range(0, disabledNeighbors.Count)];
     }
 
-    public void ActivatePlatform()
+    
+    /**
+     * Called when mouse directed on this platform
+     */
+    public void OnDirected(Material directedMaterial)
     {
         if (!IsEnabled())
         {
-            renderer.material = activeGlass;
+            _renderer.material = directedMaterial;
         }
     }
 
-    public void DisactivatePlatform()
+    public void OnOutFromDirection()
     {
         if (!IsEnabled())
         {
-            renderer.material = glass;
+            _renderer.material = _disableMaterial;
         }
     }
 }
