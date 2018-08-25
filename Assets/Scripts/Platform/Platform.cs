@@ -9,6 +9,9 @@ public class Platform : MonoBehaviour
     private List<Platform> _neighborsList;
 
     [SerializeField]
+    private List<Transform> _sidePointList;
+
+    [SerializeField]
     private Material _disableMaterial;
 
     [SerializeField]
@@ -19,6 +22,21 @@ public class Platform : MonoBehaviour
     private Renderer _renderer;
     private BoxCollider _collider;
 
+    public IEnumerable<Transform> GetSidePointList()
+    {
+        return _sidePointList;
+    }
+
+    public void SetNeighbors(List<Platform> neighborsList)
+    {
+        if (neighborsList.Count + 1 > _sidePointList.Count)
+        {
+            Debug.LogError("Platform has more neighbors than sides");
+        }
+        
+        _neighborsList = neighborsList;
+    }
+    
     private void Awake()
     {
         _renderer = gameObject.GetComponent<Renderer>();
@@ -62,7 +80,6 @@ public class Platform : MonoBehaviour
 
         return disabledNeighbors[Random.Range(0, disabledNeighbors.Count)];
     }
-
     
     /**
      * Called when mouse directed on this platform
@@ -81,5 +98,11 @@ public class Platform : MonoBehaviour
         {
             _renderer.material = _disableMaterial;
         }
+    }
+    
+    protected void OnValidate()
+    {
+        _sidePointList = GetComponentsInChildren<Transform>().ToList();
+        _sidePointList.Remove(transform);
     }
 }
