@@ -338,7 +338,7 @@ Prefab:
     - target: {fileID: 114752454187805612, guid: eca272887f2f477479a654be2b0fc749,
         type: 2}
       propertyPath: m_LockCursor
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eca272887f2f477479a654be2b0fc749, type: 2}
