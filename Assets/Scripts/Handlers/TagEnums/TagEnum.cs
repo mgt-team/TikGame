@@ -1,5 +1,6 @@
 ﻿public enum TagEnum
 {
     Player, 
-    Platform
+    Platform,
+    StablePlatform
 }
