@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114627352400254774}
   m_Layer: 0
   m_Name: Rifle
-  m_TagString: Untagged
+  m_TagString: Rifle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,4 +138,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 1038970258884884, guid: 9ffd0bac71d6ef54cae4b0b37d6233c5, type: 2}
   positionOfGeneration: {fileID: 4222047132396634}
-  speedBullet: 1000
+  trackPoint: {fileID: 1026876972192104, guid: 708c7c35d0fc2724b87165bb43ca2c53, type: 2}
+  speedBullet: 1500

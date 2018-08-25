@@ -2643,7 +2643,7 @@ MonoBehaviour:
   bullet: {fileID: 1038970258884884, guid: 9ffd0bac71d6ef54cae4b0b37d6233c5, type: 2}
   positionOfGeneration: {fileID: 4898437378423368}
   trackPoint: {fileID: 0}
-  speedBullet: 1500
+  speedBullet: 1000
 --- !u!114 &114539423268530838
 MonoBehaviour:
   m_ObjectHideFlags: 1
