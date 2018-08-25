@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlatformNeighborsFinder : MonoBehaviour
@@ -10,6 +11,9 @@ public class PlatformNeighborsFinder : MonoBehaviour
 	[SerializeField] 
 	private bool _allowChecking; // Flag that shows if script can check neighbors
 
+	private readonly IEnumerable<TagEnum> _neighborTags = new List<TagEnum>() 
+		{TagEnum.Platform, TagEnum.StablePlatform};
+	
 	private void OnValidate ()
 	{
 		if (!_allowChecking)
@@ -35,7 +39,7 @@ public class PlatformNeighborsFinder : MonoBehaviour
 		if (Physics.Raycast(gameObject.transform.position, direction, out hit, _raycastLenght)) 
 		{
 			// Check if intersected object is Platform
-			if (hit.transform.CompareTag(TagManager.GetTagNameByEnum(TagEnum.Platform)))
+			if (TagManager.CompareTagWithTagsList(hit.transform.tag, _neighborTags))
 			{
 				return hit.transform.gameObject.GetComponent<Platform>();
 			}
