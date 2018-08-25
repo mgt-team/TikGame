@@ -82,8 +82,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196c06791ef3c3f498eeac4be3c5f284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FinishPlatform: {fileID: 0}
-  PlatformManager: {fileID: 114898966451387698}
+  _finishPlatform: {fileID: 0}
+  _platformManager: {fileID: 114898966451387698}
+  rifle: {fileID: 0}
+  direction: {fileID: 0}
+  interval: 3
+  timer: 0
 --- !u!114 &114898966451387698
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -95,9 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27105fa50ba58ec4c9a1ab652c5c4e2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Platforms: []
-  FinishPlatform: {fileID: 0}
-  StartPlatforms: []
+  _platformMap: {fileID: 0}
+  _finishPlatform: {fileID: 0}
+  _startPlatforms:
+  - {fileID: 0}
 --- !u!114 &114917771985905004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -109,4 +114,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26b887327bcccf245aaa5951f6d788b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlatformManager: {fileID: 114898966451387698}
+  _platformManager: {fileID: 114898966451387698}
