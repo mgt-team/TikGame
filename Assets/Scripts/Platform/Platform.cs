@@ -29,7 +29,7 @@ public class Platform : MonoBehaviour
 
     public void SetNeighbors(List<Platform> neighborsList)
     {
-        if (neighborsList.Count + 1 > _sidePointList.Count)
+        if (neighborsList.Count > _sidePointList.Count)
         {
             Debug.LogError("Platform has more neighbors than sides");
         }
