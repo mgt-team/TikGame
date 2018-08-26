@@ -12,6 +12,9 @@ public class DirectionOnPlatformController : MonoBehaviour {
     private RaycastHit _hit;
     private Transform _transform;
 
+    private Color red = new Vector4(1, 0, 0, 1);
+    private Color white = new Vector4(1, 1, 1, 1);
+
     private void Start()
     {
         _transform = gameObject.transform;
@@ -21,7 +24,7 @@ public class DirectionOnPlatformController : MonoBehaviour {
     {
         Vector3 direction = _transform.TransformDirection(Vector3.forward);
         // Check ray intersection with object 
-        if(Physics.Raycast(_transform.position, direction, out _hit, 1000f)) 
+        if (Physics.Raycast(_transform.position, direction, out _hit, 1000f))
         {
             // Check if intersected object is Platform
             if (_hit.transform.CompareTag(TagManager.GetTagNameByEnum(TagEnum.Platform)))
@@ -50,6 +53,16 @@ public class DirectionOnPlatformController : MonoBehaviour {
                 _targetPlatform = null;
             }
         }
+    }
+
+    public void RedMaterial()
+    {
+        _directedMaterial.color = red;
+    }
+
+    public void WhiteMaterial()
+    {
+        _directedMaterial.color = white;
     }
 
     public Platform GetTargetPlatform()

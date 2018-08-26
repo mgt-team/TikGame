@@ -8,6 +8,15 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private PlatformManager _platformManager;
 
+    [SerializeField]
+    private Rifle rifle;
+
+    [SerializeField]
+    private DirectionOnPlatformController direction;
+
+    public float interval;
+    public float timer;
+
     private void Start()
     {
         _finishPlatform.onFinish += FinishPlatform_onFinish;
