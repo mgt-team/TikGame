@@ -16,33 +16,35 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private MouseButton _mouseButtonForShoot;
 
-    public delegate void MethoodContainer();
-    public event MethoodContainer ActionCommitted;
+    private delegate void MethoodContainer();
+    private event MethoodContainer ActionCommitted;
 
-    public float interval;
+    [SerializeField]
+    private float _interval;
 
     [ReadOnly]
-    public float timer = 0;
+    [SerializeField]
+    private float _timer = 0;
 
     // Update is called once per frame
     private void Update ()
 	{
-		if(timer <= 0)
+		if(_timer <= 0)
         {
             _directionOnPlatformController.WhiteMaterial();
             ApproveOfAction();
             ActionCommitted += PlayerController_ActionCommitted;
         }
-        else if(timer > 0)
+        else if(_timer > 0)
         {
             _directionOnPlatformController.RedMaterial();
-            timer -= Time.deltaTime;
+            _timer -= Time.deltaTime;
         }
 	}
 
     private void PlayerController_ActionCommitted()
     {
-        timer = interval;
+        _timer = _interval;
     }
 
     private void ApproveOfAction()

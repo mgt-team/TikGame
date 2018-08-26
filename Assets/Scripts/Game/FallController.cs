@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class FallController : MonoBehaviour {
     
@@ -6,24 +7,22 @@ public class FallController : MonoBehaviour {
     {
         if (TagManager.CompareCollisionTag(other, TagEnum.Player))
         {
-            OnPlayerFell(other.gameObject.GetComponent<Player>());
+            OnPlayerFall(other.gameObject);
         }
-        else if (TagManager.CompareCollisionTag(other, TagEnum.Bullet))
+
+        if (TagManager.CompareCollisionTag(other, TagEnum.Bullet))
         {
-            OnBulletFell(other.gameObject.GetComponent<Bullet>());
+            OnBulletFall(other.gameObject);
         }
     }
 
-    private void OnBulletFell(Bullet bullet)
-    {
-        bullet.gameObject.SetActive(false);
-        Destroy(bullet);
-    }
-
-    private void OnPlayerFell(Player player)
+    private void OnPlayerFall(GameObject player)
     {
         
     }
-    
-    
+
+    private void OnBulletFall(GameObject bullet)
+    {
+        Destroy(bullet);
+    }
 }

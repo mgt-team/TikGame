@@ -5,13 +5,13 @@ using UnityEngine;
 public class Gun : MonoBehaviour {
 
     [SerializeField]
-    private GameObject _bullet;
+    private UnityEngine.GameObject _bullet;
 
     [SerializeField]
     private Transform _positionOfGeneration;
 
     [SerializeField]
-    private GameObject _trackPoint;
+    private UnityEngine.GameObject _trackPoint;
 
     [SerializeField]
     private float _bulletSpeed;
@@ -20,7 +20,7 @@ public class Gun : MonoBehaviour {
 
     public void Shoot()
     {
-        var instance = Instantiate(_bullet, _positionOfGeneration.position, Quaternion.identity) as GameObject;
+        var instance = Instantiate(_bullet, _positionOfGeneration.position, Quaternion.identity) as UnityEngine.GameObject;
         _rigidbody = instance.GetComponent<Rigidbody>();
         Vector3 direction = transform.TransformDirection(Vector3.forward);
         _rigidbody.AddForce(direction * _bulletSpeed);
