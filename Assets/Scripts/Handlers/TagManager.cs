@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 public static class TagManager
 {
@@ -14,6 +15,11 @@ public static class TagManager
     {
         return tagEnumList.Select(GetTagNameByEnum)
             .Any(tag => tag.Equals(tagToCompare));
+    }
+
+    public static bool CompareCollisionTag(Collision collision, TagEnum tagToCheck)
+    {
+        return collision.gameObject.CompareTag(GetTagNameByEnum(tagToCheck));
     }
 }
 
