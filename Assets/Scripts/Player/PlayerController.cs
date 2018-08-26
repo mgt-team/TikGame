@@ -17,7 +17,8 @@ public class PlayerController : MonoBehaviour
     private MouseButton _shootMouseButton;
 
     public delegate void MethoodContainer();
-    public event MethoodContainer ActionCommitted;
+    public event MethoodContainer ShootCommitted;
+    public event MethoodContainer GenerateCommitted;
 
     [SerializeField]
     private float _shootCooldown;
@@ -26,44 +27,69 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float _shootTimer = 0;
 
+    [SerializeField]
+    private float _generateCooldown;
+
+    [ReadOnly]
+    [SerializeField]
+    private float _generateTimer = 0;
+
     private void Start()
     {
-        ActionCommitted += PlayerController_ActionCommitted;
+        ShootCommitted += PlayerController_ShootCommitted;
+        GenerateCommitted += PlayerController_GenerateCommitted;
     }
 
-    private void PlayerController_ActionCommitted()
+    private void PlayerController_GenerateCommitted()
+    {
+        _generateTimer = _generateCooldown;
+    }
+
+    private void PlayerController_ShootCommitted()
     {
         _shootTimer = _shootCooldown;
     }
 
     private void Update()
     {
-        if (_shootTimer <= 0)
+        if (_generateTimer <= 0)
         {
             _directionOnPlatformController.WhiteMaterial();
-            ApproveOfAction();
+            GenerateApprove();
         }
-        else if (_shootTimer > 0)
+        else if (_generateTimer > 0)
         {
             _directionOnPlatformController.RedMaterial();
+            _generateTimer -= Time.deltaTime;
+        }
+
+        if(_shootTimer <= 0)
+        {
+            ShootApprove();
+        }
+        else if(_shootTimer > 0)
+        {
             _shootTimer -= Time.deltaTime;
         }
     }
 
-    public void ApproveOfAction()
+    public void ShootApprove()
+    {
+        if (Input.GetMouseButton(_shootMouseButton.GetHashCode()))
+        {
+            _gun.Shoot();
+            ShootCommitted();
+        }
+    }
+
+    public void GenerateApprove()
     {
         var targetPlatform = _directionOnPlatformController.GetTargetPlatform();
         if (Input.GetMouseButton(_generateMouseButton.GetHashCode()) && targetPlatform != null
                                         && !targetPlatform.IsEnabled())
         {
             targetPlatform.Enable();
-            ActionCommitted();
-        }
-
-        if (Input.GetMouseButton(_shootMouseButton.GetHashCode()))
-        {
-            _gun.Shoot();
-            ActionCommitted();
+            GenerateCommitted();
         }
     }
 }

@@ -8,9 +8,6 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private PlatformManager _platformManager;
 
-    [SerializeField]
-    private DirectionOnPlatformController _directionOnPlatformController;
-
     private void Start()
     {
         _finishPlatform.onFinish += FinishPlatform_onFinish;
