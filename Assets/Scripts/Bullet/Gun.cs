@@ -2,27 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rifle : MonoBehaviour {
+public class Gun : MonoBehaviour {
 
     [SerializeField]
-    private GameObject bullet;
+    private GameObject _bullet;
 
     [SerializeField]
-    private Transform positionOfGeneration;
+    private Transform _positionOfGeneration;
 
     [SerializeField]
-    private GameObject trackPoint;
+    private GameObject _trackPoint;
 
-    public float speedBullet;
+    [SerializeField]
+    private float _bulletSpeed;
 
     private Rigidbody _rigidbody;
 
     public void Shoot()
     {
-        var instance = Instantiate(bullet, positionOfGeneration.position, Quaternion.identity) as GameObject;
+        var instance = Instantiate(_bullet, _positionOfGeneration.position, Quaternion.identity) as GameObject;
         _rigidbody = instance.GetComponent<Rigidbody>();
         Vector3 direction = transform.TransformDirection(Vector3.forward);
-        _rigidbody.AddForce(direction * speedBullet);
+        _rigidbody.AddForce(direction * _bulletSpeed);
     }
 
     private void Update()

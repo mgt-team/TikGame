@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
     private PlatformManager _platformManager;
 
     [SerializeField]
-    private Rifle rifle;
+    private Gun _gun;
 
     [SerializeField]
     private DirectionOnPlatformController direction;

@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 	private DirectionOnPlatformController _directionOnPlatformController;
 
     [SerializeField]
-    private Rifle rifle;
+    private Gun _gun;
 
 	[SerializeField] 
 	private MouseButton _mouseButtonForGenerate;
@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButton(_mouseButtonForShoot.GetHashCode()))
         {
-            rifle.Shoot();
+            _gun.Shoot();
             ActionCommitted();
         }
     }
