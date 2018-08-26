@@ -22,7 +22,7 @@ public class Gun : MonoBehaviour {
     {
         var instance = Instantiate(_bullet, _positionOfGeneration.position, Quaternion.identity) as UnityEngine.GameObject;
         _rigidbody = instance.GetComponent<Rigidbody>();
-        Vector3 direction = transform.TransformDirection(Vector3.forward);
+        Vector3 direction = Camera.main.transform.TransformDirection(Vector3.forward);
         _rigidbody.AddForce(direction * _bulletSpeed);
     }
 

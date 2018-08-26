@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -113,6 +113,22 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &534356785 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1440554906209488, guid: ce37627f219adec43baa86eb87c886d7,
+    type: 2}
+  m_PrefabInternal: {fileID: 1799542127}
+--- !u!114 &534356790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 534356785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eafcfb0be9fc39041b0fef84db4b707f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &561078853
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,6 +238,14 @@ Prefab:
     - target: {fileID: 4776397639170594, guid: e28e6ae75c5a1bb4eb620321a019263d, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776397639170594, guid: e28e6ae75c5a1bb4eb620321a019263d, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776397639170594, guid: e28e6ae75c5a1bb4eb620321a019263d, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e28e6ae75c5a1bb4eb620321a019263d, type: 2}
@@ -421,6 +445,21 @@ Prefab:
       propertyPath: _startPlatforms.Array.data[0]
       value: 
       objectReference: {fileID: 1621473539}
+    - target: {fileID: 114488006454643210, guid: 93dd757baccc4dd47b80ce648822314e,
+        type: 2}
+      propertyPath: _playerController
+      value: 
+      objectReference: {fileID: 1848215903}
+    - target: {fileID: 114488006454643210, guid: 93dd757baccc4dd47b80ce648822314e,
+        type: 2}
+      propertyPath: _directionOnPlatformController
+      value: 
+      objectReference: {fileID: 854843494}
+    - target: {fileID: 114488006454643210, guid: 93dd757baccc4dd47b80ce648822314e,
+        type: 2}
+      propertyPath: _interval
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93dd757baccc4dd47b80ce648822314e, type: 2}
   m_IsPrefabParent: 0
@@ -437,11 +476,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4013049498306292, guid: 9b195aa37f616834f9979e92a209864c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.1
+      value: 0.55
       objectReference: {fileID: 0}
     - target: {fileID: 4013049498306292, guid: 9b195aa37f616834f9979e92a209864c, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -4.58
+      value: -13.53
       objectReference: {fileID: 0}
     - target: {fileID: 4013049498306292, guid: 9b195aa37f616834f9979e92a209864c, type: 2}
       propertyPath: m_LocalRotation.x
@@ -468,17 +507,6 @@ Prefab:
       propertyPath: _directionOnPlatformController
       value: 
       objectReference: {fileID: 854843494}
-    - target: {fileID: 114474659524096720, guid: 9b195aa37f616834f9979e92a209864c,
-        type: 2}
-      propertyPath: trackPoint
-      value: 
-      objectReference: {fileID: 1026876972192104, guid: 708c7c35d0fc2724b87165bb43ca2c53,
-        type: 2}
-    - target: {fileID: 114474659524096720, guid: 9b195aa37f616834f9979e92a209864c,
-        type: 2}
-      propertyPath: speedBullet
-      value: 1000
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b195aa37f616834f9979e92a209864c, type: 2}
   m_IsPrefabParent: 0
@@ -536,9 +564,16 @@ Prefab:
       propertyPath: m_Name
       value: FallController
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114361280220709738, guid: ce37627f219adec43baa86eb87c886d7, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: ce37627f219adec43baa86eb87c886d7, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1848215903 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114150149142193670, guid: 9b195aa37f616834f9979e92a209864c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1276176774}
+  m_Script: {fileID: 11500000, guid: 8808efa8365b2394587125eaf7949177, type: 3}
 --- !u!114 &1891366750 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114474659524096720, guid: 9b195aa37f616834f9979e92a209864c,
