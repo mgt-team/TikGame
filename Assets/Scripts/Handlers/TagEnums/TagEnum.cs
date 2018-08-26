@@ -2,5 +2,6 @@
 {
     Player, 
     Platform,
-    StablePlatform
+    StablePlatform,
+    Bullet
 }
