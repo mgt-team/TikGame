@@ -19,6 +19,36 @@ public class PlayerController : MonoBehaviour
     public delegate void MethoodContainer();
     public event MethoodContainer ActionCommitted;
 
+    [SerializeField]
+    private float _interval;
+
+    [ReadOnly]
+    [SerializeField]
+    private float _timer = 0;
+
+    private void Start()
+    {
+        ActionCommitted += PlayerController_ActionCommitted;
+    }
+
+    private void PlayerController_ActionCommitted()
+    {
+        _timer = _interval;
+    }
+
+    private void Update()
+    {
+        if (_timer <= 0)
+        {
+            _directionOnPlatformController.WhiteMaterial();
+            ApproveOfAction();
+        }
+        else if (_timer > 0)
+        {
+            _directionOnPlatformController.RedMaterial();
+            _timer -= Time.deltaTime;
+        }
+    }
 
     public void ApproveOfAction()
     {

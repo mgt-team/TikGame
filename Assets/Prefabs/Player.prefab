@@ -2616,6 +2616,8 @@ MonoBehaviour:
   _gun: {fileID: 114474659524096720}
   _mouseButtonForGenerate: 1
   _mouseButtonForShoot: 0
+  _interval: 3
+  _timer: 0
 --- !u!114 &114188318533869968
 MonoBehaviour:
   m_ObjectHideFlags: 1
