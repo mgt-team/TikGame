@@ -20,7 +20,7 @@ public class Platform : MonoBehaviour
     private bool _isEnabled = false;
 
     private Renderer _renderer;
-    private BoxCollider _collider;
+    private Collider _collider;
 
     public IEnumerable<Transform> GetSidePointList()
     {
@@ -40,7 +40,7 @@ public class Platform : MonoBehaviour
     private void Awake()
     {
         _renderer = gameObject.GetComponent<Renderer>();
-        _collider = gameObject.GetComponent<BoxCollider>();
+        _collider = gameObject.GetComponent<Collider>();
 
     }
 
