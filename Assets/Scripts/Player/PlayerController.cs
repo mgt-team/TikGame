@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_generateTimer <= 0)
         {
-            _directionOnPlatformController.WhiteMaterial();
+            _directionOnPlatformController.YellowMaterial();
             GenerateApprove();
         }
         else if (_generateTimer > 0)

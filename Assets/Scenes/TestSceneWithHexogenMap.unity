@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -152,6 +152,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 23898496950009682, guid: a90b42c8f1b128545901ca079a27c808,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6e9e6142255cc5741879012082b6c6b1, type: 2}
+    - target: {fileID: 23387303740864852, guid: a90b42c8f1b128545901ca079a27c808,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6e9e6142255cc5741879012082b6c6b1, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a90b42c8f1b128545901ca079a27c808, type: 2}
   m_IsPrefabParent: 0
@@ -194,32 +204,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 114438217806807274, guid: d2c42343c90ea3248a1911a5f44b48f3,
+    - target: {fileID: 114609150887536116, guid: d2c42343c90ea3248a1911a5f44b48f3,
         type: 2}
-      propertyPath: _shootCooldown
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114438217806807274, guid: d2c42343c90ea3248a1911a5f44b48f3,
-        type: 2}
-      propertyPath: _generateCooldown
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114438217806807274, guid: d2c42343c90ea3248a1911a5f44b48f3,
-        type: 2}
-      propertyPath: _generateMouseButton
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1256786150270936, guid: d2c42343c90ea3248a1911a5f44b48f3, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114471036037407780, guid: d2c42343c90ea3248a1911a5f44b48f3,
-        type: 2}
-      propertyPath: m_LockCursor
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114010025508698036, guid: d2c42343c90ea3248a1911a5f44b48f3, type: 2}
+      propertyPath: _directedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: e6189bde59a3e1d40adb24b0a023bd0c, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d2c42343c90ea3248a1911a5f44b48f3, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &534356785 stripped

@@ -428,7 +428,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4363908554497810}
-  - component: {fileID: 114010025508698036}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1811,7 +1810,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1256786150270936}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.293, y: 2.075, z: -13.382}
+  m_LocalPosition: {x: 2.59, y: 1.63, z: -9.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4339865638517022}
@@ -2791,38 +2790,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114010025508698036
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1256786150270936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 210
-    i1: 196
-    i2: 35
-    i3: 67
-    i4: 201
-    i5: 14
-    i6: 163
-    i7: 36
-    i8: 138
-    i9: 25
-    i10: 17
-    i11: 165
-    i12: 244
-    i13: 75
-    i14: 72
-    i15: 243
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
 --- !u!114 &114047580280801564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2864,11 +2831,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _directionOnPlatformController: {fileID: 114609150887536116}
   _gun: {fileID: 114514436422051600}
-  _generateMouseButton: 0
+  _generateMouseButton: 1
   _shootMouseButton: 0
-  _shootCooldown: 0
+  _shootCooldown: 3
   _shootTimer: 0
-  _generateCooldown: 0
+  _generateCooldown: 6
   _generateTimer: 0
 --- !u!114 &114471036037407780
 MonoBehaviour:
@@ -2919,7 +2886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetPlatform: {fileID: 0}
-  _directedMaterial: {fileID: 2100000, guid: 176465bba2d14f34ebbfa69a2abbd29a, type: 2}
+  _transparence: 0.2
 --- !u!114 &114701769254523052
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -12,8 +12,8 @@ public class DirectionOnPlatformController : MonoBehaviour {
     private RaycastHit _hit;
     private Transform _transform;
 
-    private Color red = new Vector4(1, 0, 0, 1);
-    private Color white = new Vector4(1, 1, 1, 1);
+    private Color _red = new Vector4(1, 0, 0, 0.2f);
+    private Color _yellow = new Vector4(1, 1, 0, 0.2f);
 
     private void Start()
     {
@@ -57,12 +57,12 @@ public class DirectionOnPlatformController : MonoBehaviour {
 
     public void RedMaterial()
     {
-        _directedMaterial.color = red;
+        _directedMaterial.color = _red;
     }
 
-    public void WhiteMaterial()
+    public void YellowMaterial()
     {
-        _directedMaterial.color = white;
+        _directedMaterial.color = _yellow;
     }
 
     public Platform GetTargetPlatform()
