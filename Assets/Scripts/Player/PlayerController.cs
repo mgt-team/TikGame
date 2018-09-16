@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Experimental.UIElements;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Photon.MonoBehaviour
 {
 
     [SerializeField]
@@ -23,19 +23,22 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float _shootCooldown;
 
-    [ReadOnly]
     [SerializeField]
     private float _shootTimer = 0;
 
     [SerializeField]
     private float _generateCooldown;
 
-    [ReadOnly]
     [SerializeField]
     private float _generateTimer = 0;
 
+    [SerializeField]
+    private PhotonView _photonView;
+
     private void Start()
     {
+        if (!_photonView.isMine)
+            enabled = false;
         ShootCommitted += PlayerController_ShootCommitted;
         GenerateCommitted += PlayerController_GenerateCommitted;
     }

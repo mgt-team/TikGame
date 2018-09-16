@@ -2,7 +2,6 @@
 
 public class DirectionOnPlatformController : MonoBehaviour {
 
-    [ReadOnly]
     [SerializeField]
     private Platform _targetPlatform;
 
@@ -20,7 +19,7 @@ public class DirectionOnPlatformController : MonoBehaviour {
         _transform = gameObject.transform;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Vector3 direction = _transform.TransformDirection(Vector3.forward);
         // Check ray intersection with object 

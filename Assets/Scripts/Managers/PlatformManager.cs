@@ -61,4 +61,14 @@ public class PlatformManager : MonoBehaviour
 		return _platformMap.GetPlatforms()
 			.FindAll(platform => platform.IsEnabled() && platform.HasDisabledNeighbor());
 	}
+
+    public List<Transform> GetStartedPlatforms()
+    {
+        List<Transform> transforms = new List<Transform>();
+        foreach(Platform platform in _startPlatforms)
+        {
+            transforms.Add(platform.GetTransform());
+        }
+        return transforms;
+    }
 }

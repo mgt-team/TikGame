@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gun : MonoBehaviour {
+public class Gun : Photon.MonoBehaviour {
 
     [SerializeField]
     private UnityEngine.GameObject _bullet;
@@ -18,6 +18,7 @@ public class Gun : MonoBehaviour {
 
     private Rigidbody _rigidbody;
 
+    [PunRPC]
     public void Shoot()
     {
         var instance = Instantiate(_bullet, _positionOfGeneration.position, Quaternion.identity) as UnityEngine.GameObject;
@@ -26,7 +27,8 @@ public class Gun : MonoBehaviour {
         _rigidbody.AddForce(direction * _bulletSpeed);
     }
 
-    private void Update()
+    [PunRPC]
+    private void FixedUpdate()
     {
         transform.rotation = Camera.main.transform.rotation;
     }

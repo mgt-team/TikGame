@@ -36,6 +36,11 @@ public class Platform : MonoBehaviour
         
         _neighborsList = neighborsList;
     }
+
+    public Transform GetTransform()
+    {
+        return gameObject.transform;
+    }
     
     private void Awake()
     {
