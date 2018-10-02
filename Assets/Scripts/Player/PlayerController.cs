@@ -32,13 +32,8 @@ public class PlayerController : Photon.MonoBehaviour
     [SerializeField]
     private float _generateTimer = 0;
 
-    [SerializeField]
-    private PhotonView _photonView;
-
     private void Start()
     {
-        if (!_photonView.isMine)
-            enabled = false;
         ShootCommitted += PlayerController_ShootCommitted;
         GenerateCommitted += PlayerController_GenerateCommitted;
     }
@@ -53,29 +48,34 @@ public class PlayerController : Photon.MonoBehaviour
         _shootTimer = _shootCooldown;
     }
 
+    [PunRPC]
     private void Update()
     {
-        if (_generateTimer <= 0)
+        if (photonView.isMine)
         {
-            _directionOnPlatformController.YellowMaterial();
-            GenerateApprove();
-        }
-        else if (_generateTimer > 0)
-        {
-            _directionOnPlatformController.RedMaterial();
-            _generateTimer -= Time.deltaTime;
-        }
+            if (_generateTimer <= 0)
+            {
+                _directionOnPlatformController.YellowMaterial();
+                GenerateApprove();
+            }
+            else if (_generateTimer > 0)
+            {
+                _directionOnPlatformController.RedMaterial();
+                _generateTimer -= Time.deltaTime;
+            }
 
-        if(_shootTimer <= 0)
-        {
-            ShootApprove();
-        }
-        else if(_shootTimer > 0)
-        {
-            _shootTimer -= Time.deltaTime;
+            if (_shootTimer <= 0)
+            {
+                ShootApprove();
+            }
+            else if (_shootTimer > 0)
+            {
+                _shootTimer -= Time.deltaTime;
+            }
         }
     }
 
+    [PunRPC]
     public void ShootApprove()
     {
         if (Input.GetMouseButton(_shootMouseButton.GetHashCode()))
@@ -85,6 +85,7 @@ public class PlayerController : Photon.MonoBehaviour
         }
     }
 
+    [PunRPC]
     public void GenerateApprove()
     {
         var targetPlatform = _directionOnPlatformController.GetTargetPlatform();

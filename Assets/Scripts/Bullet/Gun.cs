@@ -5,20 +5,21 @@ using UnityEngine;
 public class Gun : Photon.MonoBehaviour {
 
     [SerializeField]
-    private UnityEngine.GameObject _bullet;
+    private GameObject _bullet;
 
     [SerializeField]
     private Transform _positionOfGeneration;
-
-    [SerializeField]
-    private UnityEngine.GameObject _trackPoint;
 
     [SerializeField]
     private float _bulletSpeed;
 
     private Rigidbody _rigidbody;
 
-    [PunRPC]
+    [SerializeField]
+    private PhotonView _photonView;
+
+    private Quaternion _selfRotation;
+
     public void Shoot()
     {
         var instance = Instantiate(_bullet, _positionOfGeneration.position, Quaternion.identity) as UnityEngine.GameObject;
@@ -27,9 +28,28 @@ public class Gun : Photon.MonoBehaviour {
         _rigidbody.AddForce(direction * _bulletSpeed);
     }
 
-    [PunRPC]
-    private void FixedUpdate()
+    private void Update()
     {
-        transform.rotation = Camera.main.transform.rotation;
+       if (_photonView.isMine)
+            transform.rotation = Camera.main.transform.rotation;
+       else
+            SmoothMovement();
+    }
+
+    private void SmoothMovement()
+    {
+        transform.rotation = _selfRotation;
+    }
+
+    private void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.isWriting)
+        {
+            stream.SendNext(transform.rotation);
+        }
+        else
+        {
+            _selfRotation = (Quaternion)stream.ReceiveNext();   
+        }
     }
 }

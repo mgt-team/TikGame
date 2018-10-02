@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-public class Platform : MonoBehaviour
+public class Platform : Photon.PunBehaviour
 {
     
     [SerializeField]
@@ -16,6 +16,9 @@ public class Platform : MonoBehaviour
 
     [SerializeField]
     private Material _enableMaterial;
+
+    [SerializeField]
+    private PhotonView _photonView;
 
     private bool _isEnabled = false;
 
@@ -46,9 +49,10 @@ public class Platform : MonoBehaviour
     {
         _renderer = gameObject.GetComponent<Renderer>();
         _collider = gameObject.GetComponent<Collider>();
-
+        _photonView = GetComponent<PhotonView>();
     }
 
+    [PunRPC]
     public void Enable()
     {
         _isEnabled = true;
@@ -56,6 +60,7 @@ public class Platform : MonoBehaviour
         _collider.isTrigger = false;
     }
     
+    [PunRPC]
     public void Disable()
     {
         _isEnabled = false;
@@ -109,5 +114,21 @@ public class Platform : MonoBehaviour
     {
         _sidePointList = GetComponentsInChildren<Transform>().ToList();
         _sidePointList.Remove(transform);
+    }
+
+    private void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.isWriting)
+        {
+            bool isTrigger = _collider.isTrigger;
+            //Color color = _renderer.material.color;
+            stream.SendNext(isTrigger);
+            //stream.SendNext(color);
+        }
+        else
+        {
+            _collider.isTrigger = (bool)stream.ReceiveNext();
+            //_renderer.material.color = (Color)stream.ReceiveNext();
+        }
     }
 }

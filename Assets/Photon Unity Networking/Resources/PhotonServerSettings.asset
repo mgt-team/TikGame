@@ -47,4 +47,9 @@ MonoBehaviour:
   - Update
   - Shoot
   - SpawnPlayer
+  - IncreaseCount
+  - Disable
+  - Enable
+  - GenerateApprove
+  - ShootApprove
   DisableAutoOpenWizard: 1

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class DirectionOnPlatformController : MonoBehaviour {
+public class DirectionOnPlatformController : Photon.PunBehaviour {
 
     [SerializeField]
     private Platform _targetPlatform;
@@ -19,7 +19,7 @@ public class DirectionOnPlatformController : MonoBehaviour {
         _transform = gameObject.transform;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         Vector3 direction = _transform.TransformDirection(Vector3.forward);
         // Check ray intersection with object 

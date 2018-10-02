@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class PlatformManager : MonoBehaviour
+public class PlatformManager : Photon.PunBehaviour
 {
 	[SerializeField] 
 	private PlatformMap _platformMap;
