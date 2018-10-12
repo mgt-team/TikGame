@@ -92,7 +92,7 @@ public class PlayerController : Photon.MonoBehaviour
         if (Input.GetMouseButton(_generateMouseButton.GetHashCode()) && targetPlatform != null
                                         && !targetPlatform.IsEnabled())
         {
-            targetPlatform.Enable();
+            targetPlatform.EnableForPhoton();
             GenerateCommitted();
         }
     }

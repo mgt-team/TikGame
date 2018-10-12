@@ -13,7 +13,11 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private Vector3 m_Move;
         private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
         private Vector3 _selfPosition;
+        private Vector3 _startSyncPosition;
+        private Quaternion _startSyncRotation;
         private Quaternion _selfRotation;
+        private float _syncTime;
+        private float _delayTime;
 
         [SerializeField]
         private PhotonView _photonView;
@@ -37,7 +41,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             m_Character = GetComponent<ThirdPersonCharacter>();
         }
 
-        [PunRPC]
         private void Update()
         {
             if (_photonView.isMine)
@@ -50,12 +53,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             else {
                 SmoothNetMovement();
             }
-        }
-
-        private void SmoothNetMovement()
-        {
-            transform.position = Vector3.Lerp(transform.position, _selfPosition, Time.deltaTime);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, _selfRotation, Time.deltaTime);
         }
 
 
@@ -96,19 +93,32 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             }
         }
 
+        private void SmoothNetMovement()
+        {
+            _syncTime = Time.deltaTime;
+            transform.position = Vector3.Lerp(transform.position, _selfPosition, _syncTime/_delayTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, _selfRotation, _syncTime / _delayTime);
+        }
+
         private void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
             if (stream.isWriting)
             {
-                _selfPosition = transform.position;
-                _selfRotation = transform.rotation;
-                stream.SendNext(_selfPosition);
-                stream.SendNext(_selfRotation);
+                stream.SendNext(transform.position);
+                stream.SendNext(transform.rotation);
             }
             else
             {
+                _startSyncPosition = transform.position;
+                _startSyncRotation = transform.rotation;
                 _selfPosition = (Vector3)stream.ReceiveNext();
                 _selfRotation = (Quaternion)stream.ReceiveNext();
+
+                _syncTime = 0;
+                float lastSyncronizationTime = 0;
+                _delayTime = Time.time - lastSyncronizationTime;
+                lastSyncronizationTime = Time.time;
+
             }
         }
     }

@@ -22,7 +22,7 @@ public class Gun : Photon.MonoBehaviour {
 
     public void Shoot()
     {
-        var instance = Instantiate(_bullet, _positionOfGeneration.position, Quaternion.identity) as UnityEngine.GameObject;
+        var instance = PhotonNetwork.Instantiate(_bullet.name, _positionOfGeneration.position, Quaternion.identity, 0) as GameObject;
         _rigidbody = instance.GetComponent<Rigidbody>();
         Vector3 direction = Camera.main.transform.TransformDirection(Vector3.forward);
         _rigidbody.AddForce(direction * _bulletSpeed);

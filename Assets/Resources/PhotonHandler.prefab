@@ -78,8 +78,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cb8ad5d190e44f4891e36b229b00fc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _photonView: {fileID: 114265429013612008}
   _player: {fileID: 1256786150270936, guid: d2c42343c90ea3248a1911a5f44b48f3, type: 2}
-  _platformManager: {fileID: 114867123587548506, guid: 5dc71c471e9601248ab2e05c5efbd14a,
-    type: 2}
-  _ui: {fileID: 1124645769219560, guid: 8c3574844c0e15546be49754df198a19, type: 2}
+  _platformManager: {fileID: 0}
+  _ui: {fileID: 0}
   count: 0

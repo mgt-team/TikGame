@@ -40,9 +40,9 @@ public class Platform : Photon.PunBehaviour
         _neighborsList = neighborsList;
     }
 
-    public Transform GetTransform()
+    public Vector3 GetPosition()
     {
-        return gameObject.transform;
+        return gameObject.transform.position;
     }
     
     private void Awake()
@@ -58,6 +58,16 @@ public class Platform : Photon.PunBehaviour
         _isEnabled = true;
         _renderer.material = _enableMaterial;
         _collider.isTrigger = false;
+    }
+
+    public void EnableForPhoton()
+    {
+        _photonView.RPC("Enable", PhotonTargets.AllBuffered);
+    }
+
+    public void DisableForPhoton()
+    {
+        _photonView.RPC("Disable", PhotonTargets.AllBuffered);
     }
     
     [PunRPC]
@@ -114,21 +124,5 @@ public class Platform : Photon.PunBehaviour
     {
         _sidePointList = GetComponentsInChildren<Transform>().ToList();
         _sidePointList.Remove(transform);
-    }
-
-    private void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        if (stream.isWriting)
-        {
-            bool isTrigger = _collider.isTrigger;
-            //Color color = _renderer.material.color;
-            stream.SendNext(isTrigger);
-            //stream.SendNext(color);
-        }
-        else
-        {
-            _collider.isTrigger = (bool)stream.ReceiveNext();
-            //_renderer.material.color = (Color)stream.ReceiveNext();
-        }
     }
 }

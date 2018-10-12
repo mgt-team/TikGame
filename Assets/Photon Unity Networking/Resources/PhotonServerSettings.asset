@@ -52,4 +52,6 @@ MonoBehaviour:
   - Enable
   - GenerateApprove
   - ShootApprove
+  - SmoothNetMovement
+  - GetPlayersCount
   DisableAutoOpenWizard: 1

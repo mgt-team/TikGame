@@ -62,13 +62,14 @@ public class PlatformManager : Photon.PunBehaviour
 			.FindAll(platform => platform.IsEnabled() && platform.HasDisabledNeighbor());
 	}
 
-    public List<Transform> GetStartedPlatforms()
+    public List<Vector3> GetStartedPositions()
     {
-        List<Transform> transforms = new List<Transform>();
+        List<Vector3> positions = new List<Vector3>();
         foreach(Platform platform in _startPlatforms)
         {
-            transforms.Add(platform.GetTransform());
+            if(platform != null)
+                positions.Add(platform.GetPosition());
         }
-        return transforms;
+        return positions;
     }
 }
